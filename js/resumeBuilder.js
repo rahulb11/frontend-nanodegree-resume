@@ -165,4 +165,6 @@ function displayWork(){
     }
 
 }
+
+$("#main").append(internationalizeButton);
 displayWork();
