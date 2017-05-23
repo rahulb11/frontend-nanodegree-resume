@@ -74,16 +74,16 @@ var work = {
 var projects = {
     "projects":[
         {
-            "title":"Personal Website";
-            "dates":"Jan 2017 to Present";
-            "description":"Developing a personal website using HTML, CSS, JS";
-            "images":[];
+            "title":"Personal Website",
+            "dates":"Jan 2017 to Present",
+            "description":"Developing a personal website using HTML, CSS, JS",
+            "images":[]
         },
         {
-            "title":"Mobile Store Website";
-            "dates":"Jan 2011 to May 2011";
-            "description":"Developed a mobile store website using HTML, CSS, PHP, AJAX";
-            "images":[];
+            "title":"Mobile Store Website",
+            "dates":"Jan 2011 to May 2011",
+            "description":"Developed a mobile store website using HTML, CSS, PHP, AJAX",
+            "images":[]
         }
     ]
 }
@@ -105,32 +105,64 @@ var bio = {
 var education = {
     "schools":[
         {
-            "name":"Texas A&M University";
-            "location":"College Station";
-            "degree dates":"May 2016";
-            "url":"www.tamu.edu";
+            "name":"Texas A&M University",
+            "location":"College Station",
+            "degree dates":"May 2016",
+            "url":"www.tamu.edu",
             "majors":["MIS"]
         },
         {
-            "name":"University of Mumbai";
-            "location":"Mumbai";
-            "degree dates":"June 2012";
-            "url":"www.mu.ac.in";
+            "name":"University of Mumbai",
+            "location":"Mumbai",
+            "degree dates":"June 2012",
+            "url":"www.mu.ac.in",
             "majors":["Computer Engineering"]
         }
     ],
     "onlineCourses":[
         {
-            "title":"Data Analyst Nanoprogram";
-            "school":"Udacity";
-            "dates":"Nov 2016 to Present";
-            "url":"www.udacity.com";
+            "title":"Data Analyst Nanoprogram",
+            "school":"Udacity",
+            "dates":"Nov 2016 to Present",
+            "url":"www.udacity.com"
         },
         {
-            "title":"Front End Development Nanoprogam";
-            "school":"Udacity";
-            "dates":"May 2016 to Present";
-            "url":"www.udacity.com";
+            "title":"Front End Development Nanoprogam",
+            "school":"Udacity",
+            "dates":"May 2016 to Present",
+            "url":"www.udacity.com"
         }
     ]
 }
+
+var formattedName = HTMLheaderName.replace("%data%",bio.name);
+$("#header").append(formattedName);
+if (bio.skills.length > 0){
+    $("#header").append(HTMLskillsStart);
+    var formattedSkill = HTMLskills.replace("%data%",bio.skills[0]);
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%",bio.skills[1]);
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%",bio.skills[2]);
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%",bio.skills[3]);
+    $("#skills").append(formattedSkill);
+}
+
+function displayWork(){
+
+    for(i in work.jobs){
+        $("#workExperience").append(HTMLworkStart);
+        formattedWorkEmployer = HTMLworkEmployer.replace("%data%",work.jobs[i].employer);
+        formattedWorkTitle = HTMLworkTitle.replace("%data%",work.jobs[i].title);
+        formattedWorkDates = HTMLworkDates.replace("%data%",work.jobs[i].dates);
+        formattedWorkLocation = HTMLworkLocation.replace("%data%",work.jobs[i].location);
+        formattedWorkDescription = HTMLworkDescription.replace("%data%",work.jobs[i].description);
+        $(".work-entry:last").append(formattedWorkEmployer+" "+formattedWorkTitle);
+        $(".work-entry:last").append(formattedWorkDates);
+        $(".work-entry:last").append(formattedWorkLocation);
+        $(".work-entry:last").append(formattedWorkDescription);
+    }
+
+}
+displayWork();
