@@ -87,6 +87,28 @@ var projects = {
         }
     ]
 }
+projects.display = function(){
+    for(i in projects.projects){
+        $("#projects").append(HTMLprojectStart);
+
+        formattedProjectTitle = HTMLprojectTitle.replace("%data%",projects.projects[i].title);
+        $(".project-entry:last").append(formattedProjectTitle);
+
+        formattedProjectDates = HTMLprojectDates.replace("%data%",projects.projects[i].dates);
+        $(".project-entry:last").append(formattedProjectDates);
+
+        formattedProjectDescription = HTMLprojectDescription.replace("%data%",projects.projects[i].description);
+        $(".project-entry:last").append(formattedProjectDescription);
+
+        if(projects.projects[i].images.length > 0){
+            for(j in projects.projects[i].images){
+                formattedProjectImage = HTMLprojectImage.replace("%data%",projects.projects[i].image);
+                $(".project-entry:last").append(formattedProjectImage);
+            }
+        }
+    }
+}
+projects.display();
 
 var bio = {
     "name":"Rahul Bhandari",
@@ -168,3 +190,5 @@ function displayWork(){
 
 $("#main").append(internationalizeButton);
 displayWork();
+
+$("#mapDiv").append(googleMap);
